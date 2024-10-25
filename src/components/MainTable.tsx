@@ -7,48 +7,22 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import DetailsTabs from "./Details";
-import { getItemsAction } from "../redux/itemActions";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch } from "../store";
-
-interface Path {
-  path: string[];
-}
-
-interface Properties {
-  [key: string]: string | number;
-}
-
-export interface DataItem {
-  guid: string;
-  name: string;
-  path: string[];
-  properties: Properties;
-}
+import { useFetchItemsQuery } from "../redux/api";
+import { Item } from "../axios/dataAxios";
 
 export default function MainTable() {
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-  const [selectedItem, setSelectedItem] = useState<DataItem | null>(null);
-  const dispatch = useDispatch();
-  const { items } = useSelector((state: AppDispatch) => ({
-    items: state.item.items,
-    isLoading: state.item.isLoading,
-  }));
+  const { data: items, error, isLoading } = useFetchItemsQuery();
+  const [selectedItem, setSelectedItem] = useState<Item | null>(null);
 
-  useEffect(() => {
-    dispatch(getItemsAction());
-  }, [dispatch]);
-
-  if (loading) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
 
-  if (error) {
-    return <div>{error}</div>;
+  if (error || !items) {
+    return <div>Oops! Something went wrong</div>;
   }
 
-  const handleRowClick = (item: DataItem) => {
+  const handleRowClick = (item: Item) => {
     setSelectedItem(item);
   };
 
@@ -61,11 +35,10 @@ export default function MainTable() {
               <TableCell>GUID</TableCell>
               <TableCell>Name</TableCell>
               <TableCell>Path</TableCell>
-              <TableCell>Properties</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((item) => (
+            {items.map((item) => (
               <TableRow
                 key={item.guid}
                 hover
@@ -75,18 +48,12 @@ export default function MainTable() {
                 <TableCell>{item.guid}</TableCell>
                 <TableCell>{item.name}</TableCell>
                 <TableCell>{item.path.join(", ")}</TableCell>
-                <TableCell>
-                  {Object.entries(item.properties).map(([key, value]) => (
-                    <div key={key}>
-                      {key}: {value.toString()}
-                    </div>
-                  ))}
-                </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
+      <hr />
       {selectedItem && <DetailsTabs selectedItem={selectedItem} />}
     </div>
   );

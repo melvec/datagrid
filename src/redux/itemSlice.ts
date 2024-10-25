@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Item } from "../axios/dataAxios";
 
 // Define the types for the state
 interface ItemState {
-  items: any[];
+  items: Item[];
 }
 
 // Define the initial state
@@ -15,7 +16,7 @@ const itemSlice = createSlice({
   name: "item",
   initialState,
   reducers: {
-    setItems: (state, action: PayloadAction<any[]>) => {
+    setItems: (state, action: PayloadAction<Item[]>) => {
       state.items = action.payload;
     },
   },
