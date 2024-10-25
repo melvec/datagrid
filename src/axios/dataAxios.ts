@@ -1,4 +1,18 @@
-import { axiosApiCall } from "./axiosHelper";
+import axios from "axios";
 
-// USER API URL
-const USER_API_URL = `${import.meta.env.VITE_APP_API_BASE_URL}/api/user`;
+const baseURL = `${import.meta.env.VITE_API_BASE_URL}:${
+  import.meta.env.VITE_PORT
+}`;
+
+export const fetchItems = async () => {
+  try {
+    const response = await axios({
+      method: "get",
+      baseURL: `${baseURL}/items`,
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching items:", error);
+    throw error;
+  }
+};
