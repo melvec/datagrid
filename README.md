@@ -24,15 +24,17 @@ This project demonstrates a simple data table using React, Redux Toolkit Query, 
 
 Clone the repository:
 
-`````bash
+```bash
 git clone https://github.com/melvec/datagrid
 cd ReactNuix
 yarn install
 yarn dev
 
+```
+
 ## Project Structure
 
-````plaintext
+```plaintext
 src/
 ├── components/
 │   ├── MainTable.tsx         # Main table component displaying items
@@ -44,4 +46,4 @@ src/
 │   └── itemSlice.ts          # Redux slice for item state management
 └── App.tsx                   # Main app component
 
-`````
+```
