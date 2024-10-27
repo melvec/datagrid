@@ -20,6 +20,16 @@ This project demonstrates a simple data table using React, Redux Toolkit Query, 
 - **API:**
   - Custom API integrated with Redux for fetching data from test-0.0.1-SNAPSHOT.jar
 
+## Installation
+
+Clone the repository:
+
+`````bash
+git clone https://github.com/melvec/datagrid
+cd ReactNuix
+yarn install
+yarn dev
+
 ## Project Structure
 
 ````plaintext
@@ -34,17 +44,4 @@ src/
 │   └── itemSlice.ts          # Redux slice for item state management
 └── App.tsx                   # Main app component
 
-
-## Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/melvec/datagrid
-   cd ReactNuix
-   yarn install
-   yarn dev
-
-
-
-
-````
+`````
