@@ -4,10 +4,21 @@ This project demonstrates a simple data table using React, Redux Toolkit Query, 
 
 ## Features
 
-- **Redux Toolkit Query** for data fetching
-- **Material UI Table** for UI layout
-- **State Management** with Redux Toolkit slices
-- **TypeScript** support for type safety
+- Displays a table of items with GUID, Name, and Path.
+- Users can click on a table row to view detailed information in a tabbed interface.
+- Error handling for loading and fetching data.
+- Responsive design using Material-UI.
+
+## Technologies Used
+
+- **Frontend:**
+
+  - React
+  - Material-UI (for UI components)
+  - Redux (for state management)
+
+- **API:**
+  - Custom API integrated with Redux for fetching data from test-0.0.1-SNAPSHOT.jar
 
 ## Project Structure
 
@@ -16,52 +27,24 @@ src/
 ├── components/
 │   ├── MainTable.tsx         # Main table component displaying items
 │   └── DetailsTabs.tsx       # Component displaying detailed item information
+│   └── Image.tsx
+│   └── Properties.tsx
 ├── redux/
 │   ├── api.ts                # Redux Toolkit Query API setup
 │   └── itemSlice.ts          # Redux slice for item state management
 └── App.tsx                   # Main app component
 
 
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/melvec/datagrid
+   cd ReactNuix
+   yarn install
+   yarn dev
 
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
 ````
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from "eslint-plugin-react";
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: "18.3" } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs["jsx-runtime"].rules,
-  },
-});
-```
