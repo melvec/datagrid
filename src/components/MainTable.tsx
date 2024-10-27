@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -7,8 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import DetailsTabs from "./Details";
-import { useFetchItemsQuery } from "../redux/api";
-import { Item } from "../axios/dataAxios";
+import { Item, useFetchItemsQuery } from "../redux/api";
 
 export default function MainTable() {
   const { data: items, error, isLoading } = useFetchItemsQuery();

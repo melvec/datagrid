@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Item } from "../axios/dataAxios";
+import { Item } from "./api";
 
 // Define the types for the state
 interface ItemState {
