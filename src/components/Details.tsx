@@ -61,7 +61,7 @@ export default function DetailsTabs({ selectedItem }: DetailsTabsProps) {
         <Properties properties={selectedItem.properties} />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <Image paths={selectedItem.path} />
+        <Image image={selectedItem.guid} />
       </CustomTabPanel>
     </Box>
   );

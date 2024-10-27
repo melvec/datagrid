@@ -1,23 +1,17 @@
-import React from "react";
-import { Box, Typography, List, ListItem, ListItemText } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import { baseURL } from "../redux/api";
 
 interface ImageProps {
-  paths: string[];
+  image: string[];
 }
 
-const Image: React.FC<ImageProps> = ({ paths }) => {
+const Image: React.FC<ImageProps> = ({ image }: ImageProps) => {
   return (
     <Box sx={{ padding: 2, backgroundColor: "#f5f5f5", borderRadius: 2 }}>
       <Typography variant="h6" component="h2" sx={{ marginBottom: 2 }}>
-        Image Paths
+        Image
       </Typography>
-      <List>
-        {paths.map((path, index) => (
-          <ListItem key={index}>
-            <ListItemText primary={path} sx={{ overflowWrap: "break-word" }} />
-          </ListItem>
-        ))}
-      </List>
+      <img src={`${baseURL}/image/${image}`} alt={image.toString()} />
     </Box>
   );
 };
