@@ -4,7 +4,7 @@ import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import Properties from "./Properties";
 import Image from "./Image";
-import { DataItem } from "./MainTable";
+import { Item } from "../redux/api";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -12,7 +12,7 @@ interface TabPanelProps {
   value: number;
 }
 interface DetailsTabsProps {
-  selectedItem: DataItem;
+  selectedItem: Item;
 }
 
 function CustomTabPanel(props: TabPanelProps) {

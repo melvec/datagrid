@@ -1,11 +1,28 @@
-# React + TypeScript + Vite
+# React Redux Toolkit Query Table with Item Details
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project demonstrates a simple data table using React, Redux Toolkit Query, and Material UI. It fetches a list of items from an API, displays them in a table, and shows detailed information when a row is clicked.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Redux Toolkit Query** for data fetching
+- **Material UI Table** for UI layout
+- **State Management** with Redux Toolkit slices
+- **TypeScript** support for type safety
+
+## Project Structure
+
+````plaintext
+src/
+├── components/
+│   ├── MainTable.tsx         # Main table component displaying items
+│   └── DetailsTabs.tsx       # Component displaying detailed item information
+├── redux/
+│   ├── api.ts                # Redux Toolkit Query API setup
+│   └── itemSlice.ts          # Redux slice for item state management
+└── App.tsx                   # Main app component
+
+
+
 
 ## Expanding the ESLint configuration
 
@@ -23,7 +40,7 @@ export default tseslint.config({
     },
   },
 })
-```
+````
 
 - Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
 - Optionally add `...tseslint.configs.stylisticTypeChecked`
@@ -31,11 +48,11 @@ export default tseslint.config({
 
 ```js
 // eslint.config.js
-import react from 'eslint-plugin-react'
+import react from "eslint-plugin-react";
 
 export default tseslint.config({
   // Set the react version
-  settings: { react: { version: '18.3' } },
+  settings: { react: { version: "18.3" } },
   plugins: {
     // Add the react plugin
     react,
@@ -44,7 +61,7 @@ export default tseslint.config({
     // other rules...
     // Enable its recommended rules
     ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
+    ...react.configs["jsx-runtime"].rules,
   },
-})
+});
 ```
